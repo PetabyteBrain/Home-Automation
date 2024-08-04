@@ -1,3 +1,8 @@
+#include <BTAddress.h>
+#include <BluetoothSerial.h>
+#include <BTScan.h>
+#include <BTAdvertisedDevice.h>
+
 #define BUTTON_PIN 21 // GIOP21 pin connected to button
 #define LED_PIN1 2  // GIOP2 pin connected to LED (Built in & external) {Recognises if Button is pressed}
 #define LED_PIN2 16 // GIOP16 pin connected to LED {Recognises if Automated process is on or off}

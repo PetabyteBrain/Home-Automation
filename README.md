@@ -216,7 +216,7 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [two-way-serial-bluetooth-communication-between-two-esp32-boards](https://ok1tk.com/two-way-serial-bluetooth-communication-between-two-esp32-boards/)
 * []()
 * []()
 
