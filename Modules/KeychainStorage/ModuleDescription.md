@@ -1,31 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -35,9 +7,10 @@
   </a>
 
 <h3 align="center">Home Automation System</h3>
+<h4 align="center">Module: Keychain Storage</h4>
 
   <p align="center">
-    A Home Automation System built with Esp32 boards. (In progress)
+    A Home Automation System built with Esp32 boards.
     <br />
     <a href="https://github.com/PetabyteBrain/Home-Automation"><strong>Explore the docs »</strong></a>
     <br />
@@ -50,14 +23,12 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-Module">About The Module</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -66,7 +37,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#Modules">Modules</a></li>
+        <li><a href="#works-with">works with</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -79,10 +50,7 @@
   </ol>
 </details>
 
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Module
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -105,8 +73,6 @@ The Goal of this Project is to automate daily processes in a house. These automa
  -->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -128,10 +94,8 @@ you need these things to be able to build the Modules:
 
 With all this equipment you are able to start with your home Automation.
 
-### Modules
+### works with
 Depending on the Usecase and the Setup used there are countless possibilities for Modules to be created, for that reason I made a List with multiple example Modules that can be used as is or adapted for individual use.
-
-
 
 ### Installation
 
