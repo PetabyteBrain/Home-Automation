@@ -1,12 +1,6 @@
-/**
- * A BLE client example that is rich in capabilities.
- * There is a lot new capabilities implemented.
- * author unknown
- * updated by chegewara
- */
-
 #include "BLEDevice.h"
-//#include "BLEScan.h"
+
+#define LED_PIN 2 // GPIO2 pin connected to LED (Built-in & external) {Shows direction at which Motor was turned}
 
 // The remote service we wish to connect to.
 static BLEUUID serviceUUID("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
@@ -18,6 +12,10 @@ static boolean connected = false;
 static boolean doScan = false;
 static BLERemoteCharacteristic *pRemoteCharacteristic;
 static BLEAdvertisedDevice *myDevice;
+static String value = "";  // Global variable to store characteristic value
+static String LastCharacteristicPressed = "";
+bool motorOnState = false;
+bool switchNextState = false;
 
 static void notifyCallback(BLERemoteCharacteristic *pBLERemoteCharacteristic, uint8_t *pData, size_t length, bool isNotify) {
   Serial.print("Notify callback for characteristic ");
@@ -27,6 +25,8 @@ static void notifyCallback(BLERemoteCharacteristic *pBLERemoteCharacteristic, ui
   Serial.print("data: ");
   Serial.write(pData, length);
   Serial.println();
+  
+  value = String((char*)pData);  // Update value from notification
 }
 
 class MyClientCallback : public BLEClientCallbacks {
@@ -47,10 +47,10 @@ bool connectToServer() {
 
   pClient->setClientCallbacks(new MyClientCallback());
 
-  // Connect to the remove BLE Server.
+  // Connect to the remote BLE Server.
   pClient->connect(myDevice);  // if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
   Serial.println(" - Connected to server");
-  pClient->setMTU(517);  //set client to request maximum MTU from server (default is 23 otherwise)
+  pClient->setMTU(517);  // set client to request maximum MTU from server (default is 23 otherwise)
 
   // Obtain a reference to the service we are after in the remote BLE server.
   BLERemoteService *pRemoteService = pClient->getService(serviceUUID);
@@ -72,10 +72,10 @@ bool connectToServer() {
   }
   Serial.println(" - Found our characteristic");
 
-  // Read the value of the characteristic.
+  // Read the initial value of the characteristic.
   if (pRemoteCharacteristic->canRead()) {
-    String value = pRemoteCharacteristic->readValue();
-    Serial.print("The characteristic value was: ");
+    value = pRemoteCharacteristic->readValue();
+    Serial.print("The initial characteristic value was: ");
     Serial.println(value.c_str());
   }
 
@@ -86,6 +86,7 @@ bool connectToServer() {
   connected = true;
   return true;
 }
+
 /**
  * Scan for BLE servers and find the first one that advertises the service we are looking for.
  */
@@ -103,7 +104,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
       BLEDevice::getScan()->stop();
       myDevice = new BLEAdvertisedDevice(advertisedDevice);
       doConnect = true;
-      doScan = true;
+      doScan = false;  // Stop scanning since we found the device
 
     }  // Found our server
   }  // onResult
@@ -111,6 +112,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 
 void setup() {
   Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
   Serial.println("Starting Arduino BLE Client application...");
   BLEDevice::init("");
 
@@ -140,18 +142,37 @@ void loop() {
     doConnect = false;
   }
 
-  // If we are connected to a peer BLE Server, update the characteristic each time we are reached
-  // with the current time since boot.
-  /*
-  if (connected) {
-    String newValue = "Time since boot: " + String(millis() / 1000);
-    Serial.println("Setting new characteristic value to \"" + newValue + "\"");
-
-    // Set the characteristic's value to be the array of bytes that is actually a string.
-    pRemoteCharacteristic->writeValue(newValue.c_str(), newValue.length());
-  }else if (doScan) {
-    BLEDevice::getScan()->start(0);  // this is just example to start scan after disconnect, most likely there is better way to do it in arduino
+  // If we are connected to a peer BLE Server, print the value of the characteristic.
+  if (value.c_str() != LastCharacteristicPressed){
+    if (connected) {
+      Serial.print("Current characteristic value: ");
+      Serial.println(value.c_str());
+      switchNextState = true;
+      
+    } else if (doScan) {
+      BLEDevice::getScan()->start(0);  // Start scanning after disconnect
+    }
+    LastCharacteristicPressed = value.c_str();
   }
-*/
+  // Automated Task (can be changed to anything) 
+  // {Turns an extension cable off or on depending on the value given}
+  if(connected){
+    if(switchNextState){
+      //Turns extension cable Off by turnin the Motor in the corresponding direction
+      if(motorOnState == false){
+
+        digitalWrite(LED_PIN, LOW);
+        motorOnState = true;
+      }
+      //Turns extension cable On by turnin the Motor in the corresponding direction
+      else if(motorOnState == true){
+
+        digitalWrite(LED_PIN, HIGH);
+        motorOnState = false;
+      }
+    }
+    switchNextState = false;
+  }
+  
   delay(1000);  // Delay a second between loops.
 }  // End of loop
