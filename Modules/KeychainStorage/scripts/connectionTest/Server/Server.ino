@@ -35,7 +35,7 @@ void setup() {
   pAdvertising->setMinPreferred(0x06);  // Functions that help with iPhone connections issue
   pAdvertising->setMinPreferred(0x12);
   BLEDevice::startAdvertising();
-  Serial.println("Characteristic defined! Now you can read it on your phone!");
+  Serial.println("Characteristic defined!");
 }
 
 void loop() {
@@ -54,5 +54,5 @@ void loop() {
     lastButtonState = buttonState;  // Update last button state
   }
 
-  delay(100);  // Short delay to debounce button
+  delay(100);
 }

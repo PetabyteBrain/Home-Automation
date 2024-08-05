@@ -1,8 +1,10 @@
+#include <MultiStepper.h>
+#include <AccelStepper.h>
 #include "BLEDevice.h"
 
 #define LED_PIN 2  // GPIO2 pin connected to LED (Built-in & external) {Shows direction at which Motor was turned}
-#define stepPin 19 // GPIO19 pin connected to STEPPIN {Motor Control}
-#define dirPin 21  // GPIO21 pin connected to DIRPIN {Motor direction control}
+#define LED_PIN2 4  // GPIO4 pin connected to LED (external) {Shows Bluetooth Connection status: Connected/disconnected}
+AccelStepper stepper1(1, 19, 21); // (Typeof driver: with 2 pins, STEP, DIR)
 
 // The remote service we wish to connect to.
 static BLEUUID serviceUUID("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
@@ -36,6 +38,7 @@ class MyClientCallback : public BLEClientCallbacks {
 
   void onDisconnect(BLEClient *pclient) {
     connected = false;
+    digitalWrite(LED_PIN2, LOW);
     Serial.println("onDisconnect");
   }
 };
@@ -115,8 +118,10 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
-  pinMode(stepPin,OUTPUT); 
-  pinMode(dirPin,OUTPUT);
+  pinMode(LED_PIN2, OUTPUT);
+  stepper1.setMaxSpeed(1000); // Set maximum speed value for the stepper
+  stepper1.setAcceleration(500); // Set acceleration value for the stepper
+  stepper1.setCurrentPosition(200); // Set the current position to 200 steps
   Serial.println("Starting Arduino BLE Client application...");
   BLEDevice::init("");
 
@@ -137,11 +142,13 @@ void loop() {
   // If the flag "doConnect" is true then we have scanned for and found the desired
   // BLE Server with which we wish to connect.  Now we connect to it.  Once we are
   // connected we set the connected flag to be true.
-  if (doConnect == true) {
+  if (doConnect) {
     if (connectToServer()) {
       Serial.println("We are now connected to the BLE Server.");
+      digitalWrite(LED_PIN2, HIGH);
     } else {
       Serial.println("We have failed to connect to the server; there is nothing more we will do.");
+      digitalWrite(LED_PIN2, LOW);
     }
     doConnect = false;
   }
@@ -149,11 +156,13 @@ void loop() {
   // If we are connected to a peer BLE Server, print the value of the characteristic.
   if (value.c_str() != LastCharacteristicPressed){
     if (connected) {
+      digitalWrite(LED_PIN2, HIGH);
       Serial.print("Current characteristic value: ");
       Serial.println(value.c_str());
       switchNextState = true;
       
     } else if (doScan) {
+      digitalWrite(LED_PIN2, LOW);
       BLEDevice::getScan()->start(0);  // Start scanning after disconnect
     }
     LastCharacteristicPressed = value.c_str();
@@ -163,31 +172,20 @@ void loop() {
   if(connected){
     if(switchNextState){
       //Turns extension cable Off by turnin the Motor in the corresponding direction
-      if(motorOnState == false){
+      if(!motorOnState){
 
-        digitalWrite(dirPin,LOW); // Enables the motor to move in a particular direction
-        // Makes 200 pulses for making one full cycle rotation
-        for(int x = 0; x < 200; x++) {
-          digitalWrite(stepPin,HIGH); 
-          delayMicroseconds(700);    // by changing this time delay between the steps we can change the rotation speed
-          digitalWrite(stepPin,LOW); 
-          delayMicroseconds(700); 
-      }
+        stepper1.moveTo(0); // Set desired move: 800 steps (in quater-step resolution that's one rotation)
+        stepper1.runToPosition(); // Moves the motor to target position w/ acceleration/ deceleration and it blocks until is in position
 
         digitalWrite(LED_PIN, LOW);
         motorOnState = true;
       }
       //Turns extension cable On by turnin the Motor in the corresponding direction
-      else if(motorOnState == true){
+      else if(motorOnState){
 
-        digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
-        // Makes 200 pulses for making one full cycle rotation
-        for(int x = 0; x < 200; x++) {
-          digitalWrite(stepPin,HIGH); 
-          delayMicroseconds(700);    // by changing this time delay between the steps we can change the rotation speed
-          digitalWrite(stepPin,LOW); 
-          delayMicroseconds(700); 
-        }
+        stepper1.moveTo(400); // Set desired move: 800 steps (in quater-step resolution that's one rotation)
+        stepper1.runToPosition(); // Moves the motor to target position w/ acceleration/ deceleration and it blocks until is in position
+        
         digitalWrite(LED_PIN, HIGH);
         motorOnState = false;
       }
