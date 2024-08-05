@@ -1,6 +1,8 @@
 #include "BLEDevice.h"
 
-#define LED_PIN 2 // GPIO2 pin connected to LED (Built-in & external) {Shows direction at which Motor was turned}
+#define LED_PIN 2  // GPIO2 pin connected to LED (Built-in & external) {Shows direction at which Motor was turned}
+#define stepPin 19 // GPIO19 pin connected to STEPPIN {Motor Control}
+#define dirPin 21  // GPIO21 pin connected to DIRPIN {Motor direction control}
 
 // The remote service we wish to connect to.
 static BLEUUID serviceUUID("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
@@ -113,6 +115,8 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
+  pinMode(stepPin,OUTPUT); 
+  pinMode(dirPin,OUTPUT);
   Serial.println("Starting Arduino BLE Client application...");
   BLEDevice::init("");
 
@@ -161,12 +165,29 @@ void loop() {
       //Turns extension cable Off by turnin the Motor in the corresponding direction
       if(motorOnState == false){
 
+        digitalWrite(dirPin,LOW); // Enables the motor to move in a particular direction
+        // Makes 200 pulses for making one full cycle rotation
+        for(int x = 0; x < 200; x++) {
+          digitalWrite(stepPin,HIGH); 
+          delayMicroseconds(700);    // by changing this time delay between the steps we can change the rotation speed
+          digitalWrite(stepPin,LOW); 
+          delayMicroseconds(700); 
+      }
+
         digitalWrite(LED_PIN, LOW);
         motorOnState = true;
       }
       //Turns extension cable On by turnin the Motor in the corresponding direction
       else if(motorOnState == true){
 
+        digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
+        // Makes 200 pulses for making one full cycle rotation
+        for(int x = 0; x < 200; x++) {
+          digitalWrite(stepPin,HIGH); 
+          delayMicroseconds(700);    // by changing this time delay between the steps we can change the rotation speed
+          digitalWrite(stepPin,LOW); 
+          delayMicroseconds(700); 
+        }
         digitalWrite(LED_PIN, HIGH);
         motorOnState = false;
       }
