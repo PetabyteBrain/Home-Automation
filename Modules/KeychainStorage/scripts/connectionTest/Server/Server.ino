@@ -1,3 +1,9 @@
+/*
+ * Keychain Storage Module for the Home Automation project
+ * (Server version)
+ * https://github.com/PetabyteBrain/Home-Automation
+ * 
+ */
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEServer.h>

@@ -7,7 +7,7 @@
   </a>
 
 <h3 align="center">Home Automation System</h3>
-<h4 align="center">Module: Keychain Storage Button</h4>
+<h4 align="center">Module: Window blind control</h4>
 
   <p align="center">
     A Home Automation System built with Esp32 boards.
@@ -55,7 +55,7 @@
 [![Keychain Button Server-side][product-screenshot]](https://example.com)
 [![Keychain Button Client-side][product-screenshot2]](https://example.com)
 
-This Module has 2 parts to it, the first part is a 3d printed dish triggered by a button press when an object is placed. The button press then calls out to the second part which is another Esp32 programmed to turn on an extension cord which can turn on other devices (for example: Lights turning on when entering a room and putting down your keys at the entrance).
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,15 +63,14 @@ This Module has 2 parts to it, the first part is a 3d printed dish triggered by 
 
 ### Built With
 
-This module was built with 2 Esp32 boards and was programmed with the Arduino Ide.
+This module was built with an Esp32 board and was programmed with the Arduino Ide.
 The Libraries used for this project were:
-1. **BLEDevice**
-2. **BLEUtils**
-3. **BLEServer**
-4. **Multistepper**
-5. **accelStepper**
+1. ...
+2. ...
+3. ...
+4. ...
+5. ...
 
-The **BLE** libraries are used to create a connection between the seperate Esp32 and the **Multistepper** and **accelstepper** library is used to control the Steppermotor on the client side.
 
 * [![Cplusplus][CPP.cpp]][CPP-url]
 
@@ -81,20 +80,19 @@ The **BLE** libraries are used to create a connection between the seperate Esp32
 <!-- GETTING STARTED -->
 ## Getting Started
 
-I decided to create this module as a way to make my daily life easier. This Module can be used daily as most people put down their things when coming home from work / school / other places. Due to this fact this module can easily be adapted for different objects by changing the size of it to acount for different objects like Keys, wallets, phones and others.
-
-After coming home you can save time by having this Module to automate different processes (for example: Turning on Lights at home, opening the blinds ...). 
+...
 
 ### Prerequisites
 
 you need these things to be able to build this Module:
 
 #### Hardware:
-1. Two or more Esp32 boards (atleast 2 for the button trigger(Server-side) and for the Extension cord one(Client-side), if needed more can be used but the code needs to be adjusted for the amount)
+1. Atlease one Esp32 boards (more needed if the trigger should be external)
 2. Breadboard
 3. Jumpercables for Breadboard
 4. LEDs to show status (green, Blue, Red)
-5. 3D printer / housing for the module(to Print the case for the Module) ***optional***
+5. Buttons
+6. 3D printer / housing for the module(to Print the case for the Module) ***optional***
 
 #### Software:
 1. Arduino IDE (to programm the microcontrollers)
@@ -111,62 +109,36 @@ Depending on the Usecase and the Setup used there are countless possibilities fo
 ### Installation
 
 To install and setup this Module you first have to connect all the pins to it's corresponding places, the chapter below shows the connection in detail.
-After having connected the boards you can flash both of the ESP32 boards with the code in the [scripts folder.](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules/KeychainStorage/scripts)
+After having connected the boards you can flash both of the ESP32 boards with the code in the [scripts folder.](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules/WindowBlindControl/scripts)
 Now you just need to plug it in and the Module should be working.
 #### Connections
 
-##### Server-side (Button)
-These are the connections for the Server side of the Module:
+##### Window Blind (Timer)
+These are the connections for the version of the module that activates on a Timer based system:
 
-[![Keychain Button Server-side][diagram-screenshot]](https://example.com)
+[![Window Blind Timer][diagram-screenshot]](https://example.com)
 
-| Arduino     | Led               |
-| ----------- | -----------       |
-| GPIO 2      | Led Anode (+)     |
-| GND         | Led Cathode (-)   |
+...
+...
+(Coming soon)
 
-| Arduino     | Endstop           |
-| ----------- | -----------       |
-| GPIO 21     | Endstop Signal Pin|
-| GND         | Endstop GND Pin   |
-
-##### Client-side (Motor)
-These are the connections for the Client side of the Module:
+##### Window Blind (Daylight Sensor)
+These are the connections for the version of the module that activates depending on how much light there is outside:
 
 [![Keychain Button Server-side][diagram-screenshot2]](https://example.com)
 
-| Arduino     | Led1 (Bluetooth Status) |
-| ----------- | -----------             |
-| GPIO 4      | Led Anode (+)           |
-| GND         | Led Cathode (-)         |
+...
+...
+(Coming soon)
 
-| Arduino     | Led2 (Button Status)  |
-| ----------- | -----------           |
-| GPIO 2      | Led Anode (+)         |
-| GND         | Led Cathode (-)       |
+##### Window Blind (Button Press)
+These are the connections for the version of the module that activates depending on how much light there is outside:
 
-| Stepper Driver | Stepper Motor      |
-| -----------    | -----------        |
-| 2B             | according to coil  |
-| 2A             | according to coil  |
-| 1A             | according to coil  |
-| 1B             | according to coil  |
+[![Keychain Button Server-side][diagram-screenshot2]](https://example.com)
 
-| Stepper Driver | Stepper Driver |
-| -----------    | -----------    |
-| SLP            | RST            |
-
-| Stepper Driver | Arduino     |
-| -----------    | ----------- |
-| Step           | GPIO 19     |
-| Dir            | GPIO 21     |
-| VDD            | 3V3         |
-| GND            | GND         |
-
-| Stepper Driver | External Power           |
-| -----------    | -----------              |
-| VMot           | power between ... - ...V |
-| GND            | GND                      |
+...
+...
+(Coming soon)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -179,10 +151,20 @@ This Project can be applicable in multiple different usecases and as such cannot
 
 Here are a couple of Examples of how these Modules can be put to use:
 
-### 1. Key Input to first Automation.
-In this Example the Esp32 waits for the Button press that occurs when the House keys or another object is placed on the surface. The Result of this action is that the first Automation is trigered.
+### 1. Automatic 8am Blind opening
+A Use case for the Time based system is that it automatically opens the blinds at a certain time in the morning so that light gets in the room / house without needing the assistance of a person doing it. 
+This system can also act as a help for people that have trouble waking up in the morning.
 ...
+
+### 2. Detecting Lightlevel to control the blinds
+The second version of this Module works with a sensor that detects the Lightlevel. This sensor can be placed outside or on the edge of a window so that it can detect how much light there is at the moment, then it can adapt to the values and open or close the blinds more or less depending on what value it reads.
 ...
+
+### 3. Button press to open / close Blinds
+The third version would be to have Buttons connected to the same Esp32 or to a seperate one so that the blinds can be controlled remotely / automatically. This can make the opening and closing of blinds easier as it can then be doen by a button press instead of having to wind the blinds up or down.
+...
+
+These Module Ideas can be adapted and / or combined so that it fits better to the persons Usecase.
 
 _For more examples, please refer to the different [Modules](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules)_
 
@@ -195,15 +177,15 @@ _For more examples, please refer to the different [Modules](https://github.com/P
 
 - [x] Get Idea for Module
 - [x] plan construction and functioning
-- [x] split module into seperate parts (buton trigger & motor activator)
-- [x] research how to make multiple esp32 comumnicate and how Esp-now works
-  - [x] start building module on breadboard
-  - [x] programm module.
-- [x] Design Housing for the seperate parts of the module
+- [x] split module into seperate parts (example: buton trigger & motor activator)
+- [ ] research in detail how to make seperate parts function
+  - [ ] start building module on breadboard
+  - [ ] programm module.
+- [ ] Design Housing for the seperate parts of the module
   - [ ] 3d print and test out module with housing
   - [ ] make changes if need be
 - [ ] document module
-  - [x] create Diagram of Module and add to document
+  - [ ] create Diagram of Module and add to document
   - [ ] document function and utility of Module
 
 See the [open issues](https://github.com/PetabyteBrain/Home-Automation/issues) for a full list of proposed features (and known issues).

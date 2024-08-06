@@ -1,9 +1,17 @@
+/*
+ * Keychain Storage Module for the Home Automation project
+ * (Client version)
+ * https://github.com/PetabyteBrain/Home-Automation
+ * 
+ */
 #include <MultiStepper.h>
 #include <AccelStepper.h>
 #include "BLEDevice.h"
 
 #define LED_PIN 2  // GPIO2 pin connected to LED (Built-in & external) {Shows direction at which Motor was turned}
 #define LED_PIN2 4  // GPIO4 pin connected to LED (external) {Shows Bluetooth Connection status: Connected/disconnected}
+#define BUTTON_PIN 18 // GPIO18 pin connected to button
+#define BUTTON_PIN2 17 // GPIO17 pin connected to button
 AccelStepper stepper1(1, 19, 21); // (Typeof driver: with 2 pins, STEP, DIR)
 
 // The remote service we wish to connect to.
@@ -117,6 +125,8 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 
 void setup() {
   Serial.begin(115200);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_PIN2, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_PIN2, OUTPUT);
   stepper1.setMaxSpeed(1000); // Set maximum speed value for the stepper
@@ -138,6 +148,14 @@ void setup() {
 
 // This is the Arduino main loop function.
 void loop() {
+  int buttonState = digitalRead(BUTTON_PIN);
+  int buttonState2 = digitalRead(BUTTON_PIN2);
+
+  if (buttonState == LOW) {
+      digitalWrite(LED_PIN, HIGH);
+    } else {
+      digitalWrite(LED_PIN, LOW)
+    }
 
   // If the flag "doConnect" is true then we have scanned for and found the desired
   // BLE Server with which we wish to connect.  Now we connect to it.  Once we are
