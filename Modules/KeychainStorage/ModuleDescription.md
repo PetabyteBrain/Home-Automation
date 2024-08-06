@@ -52,7 +52,8 @@
 
 ## About The Module
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Keychain Button Server-side][product-screenshot]](https://example.com)
+[![Keychain Button Client-side][product-screenshot2]](https://example.com)
 
 This Module has 2 parts to it, the first part is a 3d printed dish triggered by a button press when an object is placed. The button press then calls out to the second part which is another Esp32 programmed to turn on an extension cord which can turn on other devices (for example: Lights turning on when entering a room and putting down your keys at the entrance).
 
@@ -107,6 +108,57 @@ Depending on the Usecase and the Setup used there are countless possibilities fo
 ### Installation
 
 The Installation works by ...
+
+#### Connections
+
+##### Server-side (Button)
+These are the connections for the Server side of the Module:
+
+| Arduino     | Led               |
+| ----------- | -----------       |
+| GPIO 2      | Led Anode (+)     |
+| GND         | Led Cathode (-)   |
+
+| Arduino     | Endstop           |
+| ----------- | -----------       |
+| GPIO 21     | Endstop Signal Pin|
+| GND         | Endstop GND Pin   |
+
+##### Client-side (Motor)
+These are the connections for the Client side of the Module:
+
+| Arduino     | Led1 (Bluetooth Status) |
+| ----------- | -----------             |
+| GPIO 4      | Led Anode (+)           |
+| GND         | Led Cathode (-)         |
+
+| Arduino     | Led2 (Button Status)  |
+| ----------- | -----------           |
+| GPIO 2      | Led Anode (+)         |
+| GND         | Led Cathode (-)       |
+
+| Stepper Driver | Stepper Motor      |
+| -----------    | -----------        |
+| 2B             | according to coil  |
+| 2A             | according to coil  |
+| 1A             | according to coil  |
+| 1B             | according to coil  |
+
+| Stepper Driver | Stepper Driver |
+| -----------    | -----------    |
+| SLP            | RST            |
+
+| Stepper Driver | Arduino     |
+| -----------    | ----------- |
+| Step           | GPIO 19     |
+| Dir            | GPIO 21     |
+| VDD            | 3V3         |
+| GND            | GND         |
+
+| Stepper Driver | External Power           |
+| -----------    | -----------              |
+| VMot           | power between ... - ...V |
+| GND            | GND                      |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -237,7 +289,8 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 [license-url]: https://github.com/PetabyteBrain/Home-Automation/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/spyros-catechis-0117242a6
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/keychainButtonClient.jpg
+[product-screenshot2]: images/keychainButtonServer.jpg
 [CPP.cpp]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
 [CPP-url]: https://www.arduino.cc/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
