@@ -63,16 +63,19 @@ This Module has 2 parts to it, the first part is a 3d printed dish triggered by 
 
 ### Built With
 
+This module was built with 2 Esp32 boards and was programmed with the Arduino Ide.
+The Libraries used for this project were:
+1. **BLEDevice**
+2. **BLEUtils**
+3. **BLEServer**
+4. **Multistepper**
+5. **accelStepper**
+
+The **BLE** libraries are used to create a connection between the seperate Esp32 and the **Multistepper** and **accelstepper** library is used to control the Steppermotor on the client side.
+
 * [![Cplusplus][CPP.cpp]][CPP-url]
-<!-- 
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
- -->
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -87,7 +90,7 @@ After coming home you can save time by having this Module to automate different 
 you need these things to be able to build this Module:
 
 #### Hardware:
-1. Two or more Esp32 boards (atleast 2 for the button trigger and for the Extension cord one, if needed more can be used but the code needs to be adjusted for the amount)
+1. Two or more Esp32 boards (atleast 2 for the button trigger(Server-side) and for the Extension cord one(Client-side), if needed more can be used but the code needs to be adjusted for the amount)
 2. Breadboard
 3. Jumpercables for Breadboard
 4. LEDs to show status (green, Blue, Red)
@@ -107,8 +110,9 @@ Depending on the Usecase and the Setup used there are countless possibilities fo
 
 ### Installation
 
-The Installation works by ...
-
+To install and setup this Module you first have to connect all the pins to it's corresponding places, the chapter below shows the connection in detail.
+After having connected the boards you can flash both of the ESP32 boards with the code in the [scripts folder.](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules/KeychainStorage/scripts)
+Now you just need to plug it in and the Module should be working.
 #### Connections
 
 ##### Server-side (Button)
@@ -274,7 +278,8 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 ## Acknowledgments
 
 * []()
-* []()
+* [stepper motors and arduino the ultimate guide](https://howtomechatronics.com/tutorials/arduino/stepper-motors-and-arduino-the-ultimate-guide)
+* [Planning connection for Esp32](https://wokwi.com/projects/new/esp32)
 * [Github Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -301,17 +306,3 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 [diagram-screenshot2]: images/circuitDiagram_ClientSide.png
 [CPP.cpp]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
 [CPP-url]: https://www.arduino.cc/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 

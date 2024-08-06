@@ -93,16 +93,14 @@ The Goal of this Project is to automate daily processes in a house. These automa
 
 
 ### Built With
-<!-- 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
- -->
+
+The modules were built with Esp32 boards and were programmed with the Arduino Ide.
+
+The libraries used might be different depending on the Module, for more Details go check out the different [Modules.](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules)
+
+* [![Cplusplus][CPP.cpp]][CPP-url]
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -131,14 +129,33 @@ With all this equipment you are able to start with your home Automation.
 ### Modules
 Depending on the Usecase and the Setup used there are countless possibilities for Modules to be created, for that reason I made a List with multiple example Modules that can be used as is or adapted for individual use.
 
+1. Keychain Storage / Button trigger
+2. Extension cord activater
+3. Plant watering system (on timer or light humidity sensor)
+4. automatic window blind opening/closing system (at specific time, at set brightness or triggered by button press.)
+5. Automatic coffee maker
+6. build smart doorbell
+7. automatic cat feeder
+8. ...
+
+While developing these Moduls you need to keep in mind how you want the automation to be triggered, if it should be done on the same board or through a seperate board with bluetooth. As it was already pointed out there can be different triggers for the automated processes, some may be: ***Trigger on ...***
+
+1. Timer
+2. Button press
+3. specific Lightlevel
+4. humidity (in air or ground)
+5. proximity / movement
+6. Noise Level
+7. Temperature
+8. NFC / Rfid Tag
+9. ...
 
 
 ### Installation
 
-The Installation works by ...
+The Installation might be a bit different for each module, for that reason there is a seperate installlation guide under every Module description.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
@@ -162,8 +179,8 @@ _For more examples, please refer to the different [Modules](https://github.com/P
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Make list of possible useful Modules
-- [ ] Plan Modules
+- [x] Make list of possible useful Modules
+- [x] Plan Modules
 - [ ] Create seperate Modules
     - [ ] Document and Explain function of each Module
     - [ ] ...
@@ -241,7 +258,8 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 ## Acknowledgments
 
 * []()
-* []()
+* [stepper motors and arduino the ultimate guide](https://howtomechatronics.com/tutorials/arduino/stepper-motors-and-arduino-the-ultimate-guide)
+* [Planning connection for Esp32](https://wokwi.com/projects/new/esp32)
 * [Github Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -263,19 +281,5 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/spyros-catechis-0117242a6
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[CPP.cpp]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
+[CPP-url]: https://www.arduino.cc/
