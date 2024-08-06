@@ -7,7 +7,7 @@
   </a>
 
 <h3 align="center">Home Automation System</h3>
-<h4 align="center">Module: Keychain Storage</h4>
+<h4 align="center">Module: Keychain Storage Button</h4>
 
   <p align="center">
     A Home Automation System built with Esp32 boards.
@@ -54,15 +54,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-The Goal of this Project is to automate daily processes in a house. These automated processes can be triggered through different things, for example:(Placing Keys on a Dish while entering room, Trigger with a Timer/Date or something else). 
+This Module has 2 parts to it, the first part is a 3d printed dish triggered by a button press when an object is placed. The button press then calls out to the second part which is another Esp32 programmed to turn on an extension cord which can turn on other devices (for example: Lights turning on when entering a room and putting down your keys at the entrance).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
+
+* [![Cplusplus][CPP.cpp]][CPP-url]
 <!-- 
-* [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
@@ -76,26 +77,32 @@ The Goal of this Project is to automate daily processes in a house. These automa
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The first step to automating processes is to find something that needs to be automated, may that be watering the plants or turning on a light when you enter a room.
+I decided to create this module as a way to make my daily life easier. This Module can be used daily as most people put down their things when coming home from work / school / other places. Due to this fact this module can easily be adapted for different objects by changing the size of it to acount for different objects like Keys, wallets, phones and others.
+
+After coming home you can save time by having this Module to automate different processes (for example: Turning on Lights at home, opening the blinds ...). 
 
 ### Prerequisites
 
-you need these things to be able to build the Modules:
+you need these things to be able to build this Module:
 
 #### Hardware:
-1. One or more Esp32 boards (Amount depends on the number of Modules that you need)
+1. Two or more Esp32 boards (atleast 2 for the button trigger and for the Extension cord one, if needed more can be used but the code needs to be adjusted for the amount)
 2. Breadboard
 3. Jumpercables for Breadboard
-4. May need more depending on the Module and usecase...
-5. 3D printer (to Print the case for the Module) ***optional***
+4. LEDs to show status (green, Blue, Red)
+5. 3D printer / housing for the module(to Print the case for the Module) ***optional***
 
 #### Software:
 1. Arduino IDE (to programm the microcontrollers)
 
-With all this equipment you are able to start with your home Automation.
+After having checked these prerequisites you should be ready to build this Module.
 
 ### works with
-Depending on the Usecase and the Setup used there are countless possibilities for Modules to be created, for that reason I made a List with multiple example Modules that can be used as is or adapted for individual use.
+Depending on the Usecase and the Setup used there are countless possibilities for Modules to be created and adapted, for that reason I made a List with multiple example Modules that can be used as is or adapted for individual use.
+
+1. Keychain Button trigger.
+2. Stepper Motor Extension cord activator
+3. ... (more coming soon)
 
 ### Installation
 
@@ -117,7 +124,7 @@ In this Example the Esp32 waits for the Button press that occurs when the House 
 ...
 ...
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the different [Modules](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,12 +133,16 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Make list of possible useful Modules
-- [ ] Plan Modules
-- [ ] Create seperate Modules
-    - [ ] Document and Explain function of each Module
-    - [ ] ...
-- [ ] ...
+- [x] Get Idea for Module
+- [x] plan construction and functioning
+- [x] split module into seperate parts (buton trigger & motor activator)
+- [x] research how to make multiple esp32 comumnicate and how Esp-now works
+  - [x] start building module on breadboard
+  - [ ] programm module.
+- [ ] Design Housing for the seperate parts of the module
+  - [ ] 3d print and test out module with housing
+  - [ ] make changes if need be
+- [ ] document module and it's function
 
 See the [open issues](https://github.com/PetabyteBrain/Home-Automation/issues) for a full list of proposed features (and known issues).
 
@@ -159,8 +170,32 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 ## License
+This Readme file is under the MIT License and the Rest of the Project is under the GNU General Public License. See `LICENSE.txt` for more information.
 
-Distributed under the GNU GENERAL PUBLIC LICENSE License. See `LICENSE.txt` for more information.
+### MIT License 
+```
+MIT License
+
+Copyright (c) 2021 Othneil Drew
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -203,8 +238,8 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/spyros-catechis-0117242a6
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
+[CPP.cpp]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
+[CPP-url]: https://www.arduino.cc/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D

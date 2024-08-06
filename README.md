@@ -153,7 +153,7 @@ In this Example the Esp32 waits for the Button press that occurs when the House 
 ...
 ...
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the different [Modules](https://github.com/PetabyteBrain/Home-Automation/tree/main/Modules)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,8 +195,32 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 ## License
+This Readme file is under the MIT License and the Rest of the Project is under the GNU General Public License. See `LICENSE.txt` for more information.
 
-Distributed under the GNU GENERAL PUBLIC LICENSE License. See `LICENSE.txt` for more information.
+### MIT License 
+```
+MIT License
+
+Copyright (c) 2021 Othneil Drew
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,7 +240,7 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [two-way-serial-bluetooth-communication-between-two-esp32-boards](https://ok1tk.com/two-way-serial-bluetooth-communication-between-two-esp32-boards/)
+* []()
 * []()
 * []()
 
