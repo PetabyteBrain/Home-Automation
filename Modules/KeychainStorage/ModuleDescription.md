@@ -145,6 +145,16 @@ These are the connections for the Client side of the Module:
 | GPIO 2      | Led Anode (+)         |
 | GND         | Led Cathode (-)       |
 
+| Arduino     | Button1 (turns Motor in one Direction)  |
+| ----------- | -----------                             |
+| GPIO 18     | Bottom connector (Left)                 |
+| GND         | Bottom connector (Right)                |
+
+| Arduino     | Button2 (turns Motor in other direction) |
+| ----------- | -----------                              |
+| GPIO 17     | Bottom connector (Left)                  |
+| GND         | Bottom connector (Right)                 |
+
 | Stepper Driver | Stepper Motor      |
 | -----------    | -----------        |
 | 2B             | according to coil  |

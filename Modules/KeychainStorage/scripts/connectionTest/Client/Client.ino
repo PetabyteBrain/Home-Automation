@@ -151,11 +151,27 @@ void loop() {
   int buttonState = digitalRead(BUTTON_PIN);
   int buttonState2 = digitalRead(BUTTON_PIN2);
 
-  if (buttonState == LOW) {
+  if(buttonState2 == HIGH){
+    if (buttonState == LOW) {
+      
       digitalWrite(LED_PIN, HIGH);
+      stepper1.moveTo(0); // Set desired move: 800 steps (in quater-step resolution that's one rotation)
+      stepper1.runToPosition(); // Moves the motor to target position w/ acceleration/ deceleration and it blocks until is in position
+      
     } else {
-      digitalWrite(LED_PIN, LOW)
+      digitalWrite(LED_PIN, LOW);
     }
+  }else if(buttonState == HIGH){
+    if (buttonState2 == LOW) {
+      
+      digitalWrite(LED_PIN, HIGH);
+      stepper1.moveTo(400); // Set desired move: 800 steps (in quater-step resolution that's one rotation)
+      stepper1.runToPosition(); // Moves the motor to target position w/ acceleration/ deceleration and it blocks until is in position
+        
+    } else {
+      digitalWrite(LED_PIN, LOW);
+    }
+  }
 
   // If the flag "doConnect" is true then we have scanned for and found the desired
   // BLE Server with which we wish to connect.  Now we connect to it.  Once we are
