@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/PetabyteBrain/Home-Automation">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="../../images/projectLogo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Home Automation System</h3>
@@ -114,6 +114,8 @@ The Installation works by ...
 ##### Server-side (Button)
 These are the connections for the Server side of the Module:
 
+[![Keychain Button Server-side][diagram-screenshot]](https://example.com)
+
 | Arduino     | Led               |
 | ----------- | -----------       |
 | GPIO 2      | Led Anode (+)     |
@@ -126,6 +128,8 @@ These are the connections for the Server side of the Module:
 
 ##### Client-side (Motor)
 These are the connections for the Client side of the Module:
+
+[![Keychain Button Server-side][diagram-screenshot2]](https://example.com)
 
 | Arduino     | Led1 (Bluetooth Status) |
 | ----------- | -----------             |
@@ -190,11 +194,13 @@ _For more examples, please refer to the different [Modules](https://github.com/P
 - [x] split module into seperate parts (buton trigger & motor activator)
 - [x] research how to make multiple esp32 comumnicate and how Esp-now works
   - [x] start building module on breadboard
-  - [ ] programm module.
-- [ ] Design Housing for the seperate parts of the module
+  - [x] programm module.
+- [x] Design Housing for the seperate parts of the module
   - [ ] 3d print and test out module with housing
   - [ ] make changes if need be
-- [ ] document module and it's function
+- [ ] document module
+  - [x] create Diagram of Module and add to document
+  - [ ] document function and utility of Module
 
 See the [open issues](https://github.com/PetabyteBrain/Home-Automation/issues) for a full list of proposed features (and known issues).
 
@@ -291,6 +297,8 @@ Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.
 [linkedin-url]: https://linkedin.com/in/spyros-catechis-0117242a6
 [product-screenshot]: images/keychainButtonClient.jpg
 [product-screenshot2]: images/keychainButtonServer.jpg
+[diagram-screenshot]: images/circuitDiagram_ServerSide.png
+[diagram-screenshot2]: images/circuitDiagram_ClientSide.png
 [CPP.cpp]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
 [CPP-url]: https://www.arduino.cc/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

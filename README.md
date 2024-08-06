@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/PetabyteBrain/Home-Automation">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/projectLogo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Home Automation System</h3>
