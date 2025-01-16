@@ -246,7 +246,7 @@ SOFTWARE.
 <!-- CONTACT -->
 ## Contact
 
-Spyros Catéchis - catechisspyros@gmail.com
+Spyros Catéchis - spyroscatechis@proton.me
 
 Project Link: [https://github.com/PetabyteBrain/Home-Automation](https://github.com/PetabyteBrain/Home-Automation)
 
